@@ -1,0 +1,369 @@
+/* không cần viết cặp thẻ style  */
+/*1. Kiểu Internal: sử dụng 1 cặp thẻ style trong file html */
+    h1 {
+        color: red; /*thuộc tính color và giá trị red*/
+        font-size: 30px; /* thuộc tính phông, cỡ chữ */
+        }
+    #first-heading{
+        color: green;
+        font-size: 20px;
+    }
+    .second-heading{
+        color: grey;
+        font-size: 20px;
+    }
+    /* ví dụ về một thẻ có nhiều class: 
+    +) nếu muốn chọn nhiều class hơn chỉ cần nối thêm tên class vào khi CSS: .class1.class2.class3{ }
+    +) chọn tất cả các thẻ con có class="name2" là con của một phần tử có class="name1": .name1 .name2{ }
+    +) chọn tất cả thẻ "p" là con của thẻ có class="parent": .parent p{ } */
+    
+    /* Lựa chọn toàn bộ các thẻ: *{ } 
+    +) Lựa chọn toàn bộ các thẻ p: p{ } 
+    +) Lựa chọn toàn bộ các thẻ p có class="class-6" như sau:  p.class-6{ } 
+    +) Lựa chọn toàn bộ các thẻ h2, h3: h3, h4{ } 
+    +) Lựa chọn toàn bộ thẻ li là con của class="list" trong toàn bộ thẻ ul: .list li{ } 
+    +) Lựa chọn toàn bộ thẻ li là con trực tiếp (là các li của li trong ul của ul): .list > li{ } 
+
+    <ul class="list">
+        <li>Item 1</li> 
+        <li>Item 2</li> 
+        <li>Item 3
+                <ul>
+                    <li>Item 1 (con Item 3)</li>
+                    <li>Item 2 (con Item 3)</li>
+                </ul> </li> 
+    </ul> 
+    +) Lựa chọn 1 thẻ p đứng liền kề sau class="class-9": class-9 + p{ }
+        <p class="class-9">Đoạn văn 10</p>
+        <p>Đoạn văn 11</p> (được chọn)
+    +) Lựa chọn toàn bộ thẻ p đứng sau class="class-10": .class-10 ~ p{ }
+        <p class="class-10">Đoạn văn 13</p>
+        <p>Đoạn văn 14</p>  (được
+        <p>Đoạn văn 15</p>  chọn) */
+/* Hiển thị tên class bên cạnh mỗi đoạn văn: [class]::after{content: " (" attr(class) ")";} */
+
+
+/* ĐẶT BIẾN TRONG CSS */
+:root{
+    --ten-bien: red;
+}
+/* thay vì viết: h1{ color: red; } thì viết: h1{ color: var(--ten-bien); */
+/* thay đổi màu của toàn bộ selector h4,h5,... */
+    h4{
+        color: var(--ten-bien);
+    }
+    h5{
+        color: var(--ten-bien)
+    }
+/* giúp css ở nhiều nơi bất kỳ trong html chỉ 1 lần mà ko cần css từng chỗ */
+/* nếu chỉ muốn thay đổi css trong 1 selector cụ thể thì dùng local:
+    h1{ --ten-bien1: green;
+        color: var(--ten-bien1); */
+    
+
+/* CSS UNITS: các đơn vị được sử dụng trong CSS để tùy chỉnh kích thước hiển thị trên web */
+/* VD về Absolute units: px: định nghĩa ra 1 box hình vuông sử dụng px */
+.box{ 
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    }
+/* VD về Relative units: % : thường sử dụng để chia layout*/
+.box{ 
+    width: 50%; /* 100%=16px */
+    /* chiếm 1 nửa bề ngang phụ thuộc vào thẻ chứa nó(body), khi tăng giảm kích thước trình duyệt thì cũng thay đổi theo */
+    height: 100px;
+    background-color: red;
+    }
+/* Lưu ý với thuộc tính height: mặc định height: auto, % ko có tác dụng nếu thẻ cha phụ thuộc không có thuộc tính height mang tính cố định ví dụ như px */
+/* rem: phụ thuộc vào thẻ html, các thẻ có css là 1rem thì sẽ đúng bằng thuộc tính trong thẻ html, 2rem thì nhân đôi
+chủ yếu dùng rem vì có thể tăng giảm toàn bộ kích thước dễ dàng */
+html{
+    font-size: 40px;
+}
+.box{ 
+    width: 50%; 
+    height: 100px;
+    background-color: red;
+    }
+/* h1{ font-size: 1rem; }*/ 
+/*khi sửa thẻ h1 thành 1rem thì thẻ h1 có kích thước 40px, 2rem là 80px */
+
+/* em: phụ thuộc vào thẻ gần nhất chứa nó mà có thuộc tính giống nó, rất ít dùng em */
+html{
+    font-size: 20px;
+}
+.box{ 
+    width: 50%;
+    height: 100px;
+    background-color: red;
+    }
+/* h1{ font-size: 1em; } */
+
+/* nó tìm từng thẻ chứa nó bắt đầu từ div mà ko đc font-size nên bỏ qua, tìm thẻ body vần ko đc font-size, tìm thẻ html đc font-size->theo font-size của html */
+/* vw: viewport width: độ rộng chiều ngang trình duyệt*/
+/* vw: viewport height: độ rộng chiều dọc trình duyệt */
+/* vd: 1vw = 1%; 1vh = 1% chiều ngang/dọc trình duyệt, ko thay đổi khi thay đổi trình duyệt  */
+
+
+/* CSS functions: Hàm */
+/* rgb: tạo ra nhiều màu nền khác nhau nhờ vào 3 thông số */
+.box{ 
+    width: 50%;
+    height: 100px;
+    background-color: rgb(0, 0, 0);
+    }
+/* calc: tính toán, có thể + - * / trong ngoặc để thay đổi kích thước tùy ý */
+.box{ 
+    width: calc(50px + 30px); /* width: calc(80% + 30px) */
+    height: 100px;
+    background-color: rgb(0, 0, 0);
+    }
+/* attr: attribute: sử dụng kết hợp với lớp giả */
+
+
+/* CSS pseudo-classes: Lớp giả CSS */
+/* :hover biến đổi thuộc tính khi di chuột vào, áp dụng đc cả chữ, box */
+h2:hover{
+    color: green;
+}
+/* :active */
+h2:active{
+    color:blue;
+}
+/* :first-child */
+/* li:first-child{
+    color: orange; } */
+
+/* :last-child */
+/* li:last-child{
+    color: orchid; } */
+
+
+/* CSS pseudo-elements: phần tử giả, chỉ cần viết css ko cần html */
+.box::before{  /* luôn đứng ở đầu khi có danh sách */
+    content: "";  /* có thể viết chữ, có thể ko có nội dung nhưng phải có content */
+    display: block; /* để có hình khối như box trong thẻ div */
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+}
+.box::after{  /* luôn đứng ở cuối khi có danh sách */
+    content: "";  /* có thể viết chữ, có thể ko có nội dung nhưng phải có content */
+    display: block; /* để có hình khối như box trong thẻ div */
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+}
+/* có thể thêm text vào content và các thuộc tính khác vào box */
+h2::first-letter{
+    font-size: 50px;
+}
+h2::first-line{
+    color: red;
+}
+h2::selection{
+    background-color: violet; /* màu nền khi được lựa chọn */
+    color: #fff;  /* màu chữ khi được lựa chọn */
+}
+/* ::selection{ } :được lựa chọn cho cả thẻ gốc, toàn bộ chữ bị ảnh hưởng*/
+
+
+/* Thuộc tính padding (đệm) */
+.box1{
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* float: left;  tất cả các phần tử con bị đẩy sang trái */
+}
+.box2{
+    background-color: firebrick;
+    padding-top: 10px; /* thêm vào đỉnh 10px */
+    padding-right: 10px; /* thêm vào phải 10px */
+    padding-bottom: 10px; /* thêm vào đáy 10px */
+    padding-left: 10px; /* thêm vào trái 10px */
+    /* cách viết nhanh: padding: 10px :nếu muốn thêm vào cả 4 cạnh là 10px
+     padding: 10px 12px (trên+10; trái, phải+12)
+     padding: 10px 12px 8px (trên+10; trái,phải+12; dưới+8 
+     padding: 10px 12px 8px 6px (trên+10; phải+12; dưới+8; trái+6)
+     padding-top: 50% (chiều cao bằng 50% chiều ngang của chính nó) */
+}
+/* Bỏ gạch chân mặc định của thẻ a như sau
+text-decoration: none; */
+
+/* Thuộc tính border (đường viền) */
+.box2{
+    background-color: firebrick;
+    padding: 10px;
+    border-width: 10px; /* độ dầy đường viền cả 4 cạnh */
+    border-top-width: 10px; /* đường viền trên 10px */
+    border-right-color: 10px; /* đường viền phải 10px */
+    border-bottom-width: 10px; /* đường viền dưới 10px */
+    border-left-width: 10px; /* đường viền trái 10px */
+    border-style: solid; /* kiểu nét liền, mặc định solid là 3px */
+    border-color: #333; 
+    /* cách viết nhanh: border: 10px solid #333 (độdày 4cạnh+nétliền + màu)
+    border-top: 10px (đỉnh); border-right: 10px (phải);... */
+}
+
+/* Thuộc tính: margin : là thuộc tính tạo ra 1 khoảng trống giữa các thẻ được đặt mặc định bao gồm các thẻ body, p, h1-h6
+cách khắc phục cho mọi thẻ: *{ margin: 0; } */
+.box3{
+    background-color: firebrick;
+    margin-top: 20px; /* thêm khoảng trống phía trên */
+    margin-left: 20px;/* thêm khoảng trống phía trái */
+}
+/* cách viết nhanh: margin: 10px (khoảng trống cho 4 cạnh) còn lại giống như padding */
+
+/* Thuộc tính box-sizing: giữ được kích cỡ ban đầu khi thêm padding, border */
+/* Khi thêm các thuộc tính padding, border sẽ bị tăng kích thước của phần tử lên, thuộc tính box-sizing làm phần tử trở về kích thước ban đầu  */
+/* Nếu padding, border lớn hơn thì nội dung trong phần tử bị hẹp và đẩy ngoài */
+.box4{
+    width: 100px;
+    height: 100px;
+    color:#fff;
+    font-size: 15px;
+    background-color: purple;
+    padding: 16px;
+    border: 2px solid #333;
+    box-sizing: border-box;
+    /* box-sizing: content-box; (trở về mặc định như ban đầu) */
+    /* box-sizing: unset; (Hủy đi toàn bộ box-sizing, sử dụng nếu ko cần thiết) */
+}
+
+/* THUỘC TÍNH BACKGROUND */
+/* Thuộc tính background-image: đặt ảnh nền */
+body{
+    margin: 0;
+}    
+.header1{
+    width: 100%;
+    height: 100vh;
+    background-image: url(https://img.meta.com.vn/Data/image/2021/01/11/tai-hinh-anh-buon-anh-buon-tam-trang-6.jpg);
+    /* thêm nhiều hình ảnh bằng cách thêm url() cách nhau bằng dấu phẩy, ảnh nào viết trước thì nằm bên trên */
+    background-size: 200px; /* theo chiều ngang */
+    /* background-size: 100%;  bằng với kích thước chứa nó theo chiều ngang */
+    /* background-size: auto;   tự động theo chiều dọc */
+    /* background-size: 100px 100px;  theo chiều ngang, dọc */
+    background-repeat: no-repeat; /* không lặp lại ảnh; repeat-x: lặp lại chiều ngang; repeat-y: lặp lại chiều dọc  */
+    /* background-image: linear-gradient(0, #333, #ccc); */
+    /* tạo ra màu chuyển từ màu1 sang màu2 đều đặn, linear-gradient(sốđộ deg , màu1, màu2), được xoay theo độ:180deg chuyển trên xuống dưới
+    và ngược lại, 90deg xoay từ trái sang phải và ngược lại; nếu bỏ độ đi thì mặc định là 180deg*/
+    /*linear-gradient(0, rgba(255, 255, 255, 0.5), rgba(0, 0, 255, 0.5)), giá trị 0.5 là độ trong suốt
+    giúp có thể nhìn thấy ảnh phía dưới */
+    /* ứng dụng của background-repeat: lặp lại ảnh mà nối đc với nhau được ảnh to hơn   */
+    
+    border: 20px dashed #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Thuộc tính background-origin: */
+    background-origin: padding-box; /* đổ lớp padding vào background */
+    background-origin: border-box; /* đổ lớp border vào background */
+    background-origin: content-box; /* đổ lớp border vào lớp content(vào lớp ảnh) */
+    /* Thuộc tính background-position: vị trí của background */
+    background-position: top right;
+    /* top right: bên trên phải, bottom right: bên dưới phải, bottom center: bên dưới ở giữa....
+     background-position: 10px : khoảng cách lề trái là 10px và nằm ở center*/
+    /* background-position: top 20px right 20px : cách cạnh trên 20px và phải 20px
+    background-position: 30px 50px : căn theo trục tọa độ x y, cách cạnh trên 50px và dưới 30px */
+    /* có thể dùng giá trị tương đối như % thay px */
+    
+}
+
+/* Thuộc tính background-size với contain: lấy phần chiều dài của hình ảnh nhưng ko bị cắt phần nào của ảnh để làm 100% khung nhìn hiển thị */
+/* background-size: contain; */
+/* Thuộc tính background-size với cover: lấy phần chiều dài của hình ảnh nhưng bị cắt 1 phần của ảnh để làm 100% khung nhìn hiển thị*/
+/* background-size: cover; */
+
+/* Cú pháp "shorthand" cho background */
+/* background: #333 url(link) no-repeat center / contain (thứ tự: background-color url() background-repeat background-position / background-size */
+
+
+/* THUỘC TÍNH VỊ TRÍ */
+/* Relative */
+.position1{
+    position: relative;
+    top: 100px; 
+    /* khoảng cách so với cạnh trên, cho phép nằm trên phần tử khác */
+    left: 100px; 
+    /* khoảng cách so với cạnh trái, cho phép nằm trên phần tử khác */
+    /* tương tự với left, right */
+}
+/* Absolute */
+.box5{
+    width: 100%;
+    height: 120px;
+    background-color: #333;
+    position: relative;
+
+}
+.box5-child{
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    position: absolute; /*1 thẻ con coi thẻ cha gần nhất (.box5) có thuộc tính position làm gốc và ko phân biệt thuộc tính bên trong position là gì miễn nó có trong thẻ cha */
+    top: 0; right: 0;
+    /* nằm phía trên cùng bên phải
+    bottom: 0; left: 0 (nằm phía dưới bên trái) */
+    /* Trong trường hợp thẻ con chiếm hết hoặc gần hết thẻ cha: thì loại bỏ width và height của thẻ con, cho k/c 4 hướng bằng 0 , thay đổi màu nền tùy ý */
+}
+/* Fixed */ /* dính, ko thay đổi */
+.header2{
+    width: 100%;
+    height: 50px;
+    background-color: orangered;
+    position: fixed; /* phần thanh màu cam đc cố định khi trượt trang web */
+    top: 0;
+}
+.fixed{
+    height: 2000px;
+}
+/* Sticky */
+/* Bám dính, đc quy định bám vào vị trí bất kỳ của trang web, cố định khi trượt trang web  */
+.position{
+    margin-top: 40px;
+    padding: 0 16px;
+    color: rgb(255, 255, 255);
+    background-color: #333;
+    position: sticky;
+    top: 0; /* quy định điểm dừng là tại k/c cách cạnh trên = 0 */
+    position: -webkit-sticky; /* Để dùng cho trình duyệt safari */
+}
+
+
+
+/* MỘT SỐ TRICKS VÀ TIP */
+/* CÁC CÁCH CĂN GIỮA TRONG CSS: */
+/* căn giữa 1 phần tử vào giữa 1 box */
+.box6{
+    background-color: orange;
+    height: 100px;   
+    display: flex; /* căn giữa đc nhiều phần tử, chia đều k/c các phần tử trong thẻ con */
+    align-items: center; /* căn giữa item theo chiều dọc trong thẻ cha */
+    justify-content: space-around; /* căn giữa trục chính, chia đều k/c các phần tử */
+    justify-content: space-between;/* căn giữa nhiều phần tử, chia đều k/c các phần tử, 2 phần tử ngoài cùng bám vào rìa màn hình */
+    justify-content: center; /* căn giữa nhiều phần tử nhưng ko chia đều k/c cho các phần tử */
+}
+h3{
+    text-align: center; /* căn giữa chiều ngang của box6 */
+    line-height: 100px; /* căn giữa chiều dọc của box6, phải đúng bằng kích thước của box6 */
+    /* cách khác là thêm trực tiếp 2 thuộc tính trên vào thẻ cha chứa nó chính là box6 */
+    /* margin:auto; tự động căn giữa đi kèm với display của thẻ cha */
+}
+/* cách khác để căn giữa nếu ko dùng các cách trên */
+.box6{
+    background-color: orange;
+    height: 100px;  
+    position: relative;
+}
+h3{
+    position: absolute;
+    top: 50%; /* k/c so với cạnh trên bằng 50% chiều cao của thẻ cha box6 */
+    left: 50%;/* k/c so với cạnh trái bằng 50% chiều cao của thẻ cha box6 */
+    transform: translateY(-50%) /* k/c so với cạnh trên bớt đi 50% chiều cao của chính nó */
+    translateX(-50%); /* k/c so với cạnh trái bớt đi 50% chiều cao của chính nó */
+    /* viết gộp: transform: translate(-50%, -50%) */
+}

@@ -1,0 +1,35 @@
+Những thành phần thường gặp trên giao diện website:
+1. Header (Thanh đầu trang)
+2. Navigation (Điều hướng, có thể nằm trong/ngoài Header, nằm cố định ở một chỗ )
+3. Breadcrumb (map, chỉ ra đang ở đâu trong website)
+4. Sidebar (1 thanh đc đặt 1 phía của màn hình, trái/phải, như phần menu)
+5. Slider (1 màn trình diễn nội dung tự chạy, hình ảnh/video)
+6. Banner (ảnh nằm đầu trang hay bất kì chỗ nào, có thể là quảng cáo)
+7. Content (Nội dung chính)
+8. Footer (Chân trang, cuối trang web)
+
+80. Phân tích dự án
+I. Phân tích
+1. Header
+2. Slider
+3. Content
+	* About (Giới thiệu, bao gồm tên, avatar)
+	* Tour (Bao gồm ngày, tháng, còn bao nhiều slot)
+	* Contact (Liên hệ, bao gồm tên sđt gmail)
+	* Image
+4. Footer 
+II. Dựng Base (Xây móng)
+Các bước đầu để xây dựng từng phần, tự đặt câu hỏi:
+1. Vị trí ở đâu?
+2. Kích thước? (width, height)
+3. Màu sắc?
+4. Kiểu dáng? (Kiểu chữ, tròn vuông)
+
+Nguyên tắc: 
+1. Đi từ ngoài vào trong
+2. Đi từ trên xuống dưới
+3. Đi từ tổng quan đến chi tiết
+
+Tìm thuộc tính của CSS trên google: CSS + tên thuộc tính + property => tìm trang web w3schools.com
+Tìm thuộc tính có đc hỗ trợ trong trình duyệt đó ko: https://caniuse.com/ (đc hỗ trợ: màu xanh)
+Tìm bộ icon: search: themify icon hoặc Font Awesome

@@ -1,0 +1,251 @@
+/* Reset CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+    /* Thuộc tính box-sizing: giữ được kích cỡ ban đầu khi thêm padding, border */
+}
+
+html{
+    font-family: Arial, Helvetica, sans-serif;
+    /* định dạng phông chữ cho tất cả chữ; tự động áp dụng phông từ trái sang phải, sans-serif là chủng loại phông ko chân */
+}
+
+.clear{
+    clear: both; /* do tính chất của thuộc tính float nên class của member-list mất tính chất khối đáng lẽ bao gồm thẻ con là 3 ảnh, mà bị tách ra thành 1 khối riêng */
+    /* cách khác là thêm overflow: hidden vào thẻ members-list */
+}
+
+.text-white{  /* thêm class này vào sau tên class mà có đoạn text khác màu trắng thì đoạn text sẽ có màu trắng */
+    color: #fff !important;  /* có độ ưu tiên cao nhất; chỉ sử dụng khi tạo class riêng lẻ */
+}
+#main{
+
+}
+
+#header{
+    height: 46px;
+    background-color: #000;
+    position: fixed; 
+    /* thuộc tính bám dính: làm thanh header bám trên đỉnh của trang web; bị mất tính chất khối của block */
+    top: 0; /* quy định k/c header so với đỉnh */
+    left: 0; /* quy định k/c header so với lề trái */
+    right: 0; /* quy định k/c header so với lề phải */
+    z-index: 1; /* do thêm position vào thẻ slider nên thẻ slider bị nổi lên so với thẻ header, thêm thuộc tính này giúp slider chìm xuống, nếu chưa chìm xuống thì tăng dần giá trị */
+}
+/* Chuyển các thẻ li từ hàng dọc thành hàng ngang dùng thuộc tính display nghĩa là hiển thị; 
+vì mặc định display: list-item là thành hàng dọc  */
+
+#nav{
+    display: inline-block; 
+    /* do tính kế thừa của block là tính chất khối nên thẻ ul chứa #nav chiếm toàn bộ chiều ngang cửa sổ
+    do đó icon search bị tràn xuống; do vậy thêm inline-block để mất tính kế thừa của block */
+}
+#nav, .subnav{ /* có dấu , ở giữa dùng áp dụng cho cả 2 selector #nav và .subnav */
+    list-style-type: none; /* bỏ dấu chấm ở trước thẻ li */
+}
+
+#nav > li{
+    display: inline-block; /* inline: nằm trên 1 hàng, ko đc kế thừa thuộc tính, block: giữ tính chất khối */
+}
+
+#nav li{
+    position: relative;
+}
+
+#nav > li > a{
+    /* chỉ sửa thuộc tính trong thẻ a cấp 1 là con trực tiếp của thẻ li, thẻ li là con trực tiếp của nav chứ ko ảnh hưởng đến cấp 2 */
+    color: #fff;
+    text-transform: uppercase; /* chỉnh chữ thường thành chữ hoa ở thẻ a cấp 1 */
+}
+
+#nav li a{
+    text-decoration: none; /* Bỏ gạch chân do mặc định của trình duyệt: text-decoration: underline*/
+    line-height: 46px; /* căn giữa chữ so với chiều cao: làm chiều cao của chữ bằng chiều cao của thẻ header; line-height: đường-chiều cao  */
+    padding: 0 24px; /* thêm đệm vào trên=0; trái,phải+24 */
+}
+/* cách khác: thêm display: inline-block vào thẻ a; mặc định chiều ngang dọc theo line-height */
+
+#nav li:hover .subnav{
+    display: block; 
+    /* giữ tính chất khối, mạnh hơn display: none; hiển thị thẻ a cấp 2 khi di chuột vào */
+}
+
+#nav > li:hover > a{
+    /* chỉ sửa thuộc tính trong thẻ a cấp 1 là con trực tiếp của thẻ li, thẻ li là con trực tiếp của nav chứ ko ảnh hưởng đến cấp 2 */
+    color: #000;/* màu chữ trên thẻ a cấp 1 */
+    background-color: #ccc;
+}
+
+#nav li:hover a{ 
+    /* lớp giả trên thẻ li: biến đổi thuộc tính khi di chuột vào, thẻ con là thẻ a vẫn đc thừa hưởng thuộc tính của thẻ li */
+}
+
+#nav li:hover{
+    background-color: #ccc; /* màu nền đc thay đổi khi di chuột vào */
+}
+
+#nav .subnav{
+    display: none; /* ẩn menu cấp 2 của More */
+    position: absolute;
+    top: 100%; /* kc so với đỉnh của trình duyệt = chiều cao của thẻ a chứa nó */
+    left: 0; /* kc so với lề trái của thẻ a chứa nó */
+    background-color: #fff;
+    min-width: 160px; /* chiều ngang tối thiểu, khi nội dung dài ra thì vẫn dài ra */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    /* là bóng đổ của hộp: box-shadow: x y độmờ màu ; h-offset: trục x, v-offset: trục y; blur: độ mờ; spread: độ lan ra(ko cần thiết); color: màu của bóng đổ
+    inset: đổ bóng vào bên trong */
+}
+
+#nav .subnav a{ 
+    color: #000; /* toàn bộ thẻ a là chữ màu đen */
+    padding: 0 12px; /* độ rộng padding trái, phải giảm từ 24px xuống 16px */
+    line-height: 38px;
+}
+
+#nav .nav-arrow-down{
+    font-size: 14px; /* kích cỡ icon cạnh More */
+}
+
+#header .search-btn{
+    float: right; /* do .search-btn là thẻ div nên kế thừa toàn bộ chiều ngang nên bị tràn xuống dưới, dùng float: right sẽ 
+    mất tính kế thừa chiều ngang */
+}
+
+#header .search-btn:hover{
+    background-color: #f44336;
+    cursor: pointer; /* thay đổi hình dạng con trỏ chuột khi di chuột vào; pointer: hình bàn tay; thêm cursor vào bất cứ class nào ko cần :hover */
+}
+
+#header .search-icon{ /* màu, kích cỡ icon search */
+    color: #fff;
+    font-size: 20px;
+    line-height: 46px; /* căn giữa chiều cao của thẻ header */
+    padding: 0 21px; /* thêm đệm vào trái phải là 21px */
+}
+    /* min-height: 500px; chiều cao tối thiểu */
+#slider{
+    position: relative;
+    margin-top: 46px; /* thêm k/c cho phần slider trên đỉnh 46px; để lùi phần slider xuống */
+    padding-top: 50%; /* chiều cao của thẻ bằng 50% chiều ngang của chính nó */
+    background: url(/assets/img/slider/slider1.jpg) top center / cover no-repeat; 
+    /* cú pháp shorthand cho background */
+}
+
+#slider .text-content{
+    position: absolute; /* để phần content ko nằm trong phần slider, khoảng không bị chiếm ở phần content ko đc chiếm nữa, 2 phần content và slider dc tách ra */
+    bottom: 47px; /* thêm padding vào sao cho kc so với cạnh dưới của thẻ cha là 47px */
+    color: #fff;
+    left: 50%; /* k/c so với cạnh trái bằng 50% chiều ngang của thẻ cha */
+    transform: translateX(-50%); /* k/c so với cạnh trái bớt đi 50% chiều ngang của chính nó */
+    text-align: center;  /* căn giữa chiều ngang của thẻ con */
+    /* có thể căn giữa bằng cách thêm left: 0; right: 0; và cách khác thêm width: 100%; */
+}
+#slider .text-heading{
+    font-weight: 500; /* tăng giảm độ dày chữ của thẻ h2 */
+    font-size: 24px;
+}
+#slider .text-description{
+    font-size: 15px;
+    margin-top: 25px;  /* thêm khoảng trống của thẻ p thêm 25px */
+}
+
+#content{
+    /* height: 1000px;
+    background-color: #ccc; */
+}
+
+#content .content-section{
+    width: 800px; /* căn chiều ngang là 800px */
+    padding: 64px 0;
+    margin-left: auto; /* thêm vào trái khoảng trắng là auto để căn giữa*/
+    margin-right: auto; /* thêm vào phải khoảng trắng là auto để căn giữa */
+}
+
+#content .section-heading{
+    font-size: 30px; /* cỡ chữ */
+    font-weight: 500; /* tăng giảm độ dày chữ của thẻ h2 */
+    text-align: center; /* căn giữa của chữ */
+    letter-spacing: 4px; /* khoảng cách giữa các chữ cái */
+}
+
+#content .section-sub-heading{
+    font-size: 15px; /* cỡ chữ */
+    text-align: center; /* căn giữa của chữ trong thẻ div */
+    margin-top: 25px; /* thêm khoảng trống phía trên */
+    font-style: italic; /* đổi chữ nghiêng */
+    opacity: 0.6; /* độ mờ của chữ là 60% */
+}
+
+#content .about-text{
+    font-size: 15px;
+    margin-top: 25px;
+    text-align: justify; /* căn đều chữ 2 bên */
+    line-height: 1.4;
+    /* điều chỉnh độ cao của dòng, tiếng anh là 1.4, TV là 1.6 */
+}
+
+#content .members-list{
+    margin-top: 48px; /* thêm khoảng trống phía trên */
+}
+
+#content .member-item{
+    float: left; /* do .member-item là thẻ div nên kế thừa toàn bộ chiều ngang nên bị tràn xuống thành dọc, dùng float: left sẽ 
+    mất tính kế thừa chiều ngang */
+    width: calc(100% / 3);
+    /* hàm tính toán chia 3 phần bằng nhau, cho 3 ảnh cách đều nhau sát với chiều dọc của chữ, để cho chiều ngang 3 ảnh bằng 100%  */
+    /* hoặc để width: 33.33333%; */
+    text-align: center; /* căn giữa của chữ trong thẻ div */
+}
+
+#content .member-name{
+    font-size: 15px; /* cỡ chữ */
+}
+
+#content .member-img{
+    width: 154px; /* độ rộng ảnh */
+    margin-top: 15px;
+    border-radius: 4px; /* bo góc của ảnh */
+}
+
+/* Tour section */
+.tour-section{
+    background-color: #000;
+}
+
+.tickets-list{
+    background-color: #fff;
+    margin-top: 40px;
+    list-style: none; /* bỏ dấu chấm ở trước thẻ li */
+}
+
+.tickets-list li{
+    color: #757575;
+    font-size: 15px;
+    padding: 11px 16px;
+    border-bottom: 1px solid #ddd; /* đường viền dưới: độ dày + kiểu nét đứt + màu của viền */
+
+}
+
+.tickets-list .sold-out{
+    color: #fff;
+    background-color: #f44336;
+    padding: 3px 4px;
+    margin-left: 16px;
+}
+
+.tickets-list .quantity{
+    float: right; /* tất cả phần tử con đẩy sang phải, làm mất tính kế thừa chiều ngang */
+    width: 24px; /* chiều ngang */
+    height: 24px; /* chiều cao */
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%; /* Đường viền hình tròn */
+    text-align: center; /* căn giữa chữ từ trái qua phải */
+    line-height: 24px; /* căn giữa từ trên xuống dưới; k/c bằng với chiều cao của nó */
+    margin-top: -3px; /* chỉ khi có thuộc tính float thì dùng được margin âm; do số 3 bị lệch xuống dưới so với content cùng hàng nên cần chỉnh margin âm để nằm giữa */
+}
+
+#footer{
+
+}

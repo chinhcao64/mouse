@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+    <!--chú thích-->
+    <!-- phím tắt chú thích = ctrl + / -->
+    <!-- 
+        1. input :thêm ô nhập chữ, số
+        2. h1 - h6 :heading - tiêu đề, mức độ giảm dần
+        3. p :paragraph - đoạn văn
+        4. img :image - hiển thị hình ảnh
+        5. a :anchor - mỏ neo - một thẻ được gắn liên kết
+        6. ul, li :unordered list, list - hiển thị dạng danh sách 
+        sắp xếp có thứ tự, danh sách. nếu thay ul = ol thì hiển thị dạng số
+        7. table :tạo bảng
+        8. button :thêm nút
+        9. div :tạo khối bao quanh các lệnh
+     -->
+    <head>
+        <title>mới học web</title> <!--tiêu đề mỗi lần truy cập vào web-->
+        <meta charset="utf-8"> <!--định nghĩa cho thẻ head, hỗ trợ hiển thị tiếng việt trên web-->
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+         <div>
+             Xin chào các bạn!
+        <input type="text">;
+        <!-- ô nhập chữ, số -->
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">;
+        <!-- ô để chọn -->
+        <input type="radio">
+        <input type="radio">
+        <input type="radio">;
+        <!-- ô để chọn -->
+        <input name="abc" type="radio">
+        <input name="abc" type="radio">
+        <input name="abc" type="radio">;
+        <!-- muốn chỉ chọn 1 ô thì thêm name, khi trùng name chi cho phép chọn 1 trong 3 -->
+
+        <h1>Các thẻ HTML thông dụng</h1>
+        
+        <p>Các số lượng vật lý trong thực tế, tự nhiên chủ yếu ở dạng tương tự, ví dụ: Nhiệt độ, áp suất, vị trí vận tốc, độ rắn bị nung nóng, tốc độ dòng chảy</p>
+        
+        <img src="https://chuyendoitinhieu.vn/wp-content/uploads/2021/03/tin-hieu-analog.png" alt="ảnh tín hiệu tương tự">
+        <!-- src là source = nguồn, alt là chú thích lên ảnh khi link ảnh lỗi, gõ lệnh: img + tab -->
+        
+        <a href="https://fullstack.edu.vn/">Tới trang học lập trình</a>
+
+        <ul>
+            <li>HTML, CSS là gì?</li>
+            <li>Cài đặt môi trường</li>
+        </ul>
+        <!-- mỗi cặp ul là 1 danh sách -->
+        <table>
+            <thead> <!-- phần đầu của bảng -->
+                <th>STT</th> <!--table heading - tiêu đề của bảng-->
+                <th>Tên</th>
+                <th>Địa chỉ</th>
+            </thead>
+            <tbody> <!-- phần thân của bảng -->
+                <tr> <!--table row - dòng của bảng-->
+                    <td>1</td>
+                    <td>Trường Chinh</td>
+                    <td>Hà Nội</td>
+                </tr> 
+                <!-- mỗi tr là 1 dòng -->
+                <tr>
+                    <td>2</td>
+                    <td>Trường Chinh 2</td>
+                    <td>Hà Nội 2</td>
+                </tr> 
+                <tr>
+                    <td>3</td>
+                    <td>Trường Chinh 3</td>
+                    <td>Hà Nội 3</td>
+                </tr> 
+            </tbody>
+        </table>
+
+        <button>Đăng ký</button>
+
+        <h1 title="Đây là tiêu đề">Attribute là gì?</h1>
+        <!-- Atrribute: thuộc tính, dùng để thêm vào trong các thẻ -->
+       
+
+
+        <h1>LÀM QUEN VỚI CSS</h1>
+        <!-- CÁC CÁCH SỬ DỤNG CSS TRONG HTLM -->
+        <h1>CSS in HTML?</h1>
+            <ul>
+                <!-- Internal: bên trong-được viết vào phần đầu hoặc phần thân,
+                được viết vào thẻ style, là sử dụng 1 cặp thẻ style trong file html-->
+                <li>Internal</li>
+                <!-- vd: Kiểu Internal:
+                <style>
+                h1 {
+                    color: red; /*thuộc tính color và giá trị red*/
+                    font-size: 50px; /* thuộc tính phông, cỡ chữ */ }
+                </style>-->
+                <!-- External: sử dụng file bên ngoài rồi link vào file html -->
+                <li>External</li>
+                <!-- vd: <link rel="stylesheet" href="main.css"> -->
+                <!-- Inline: viết vào trong cái dòng, vào trong thẻ, 
+                nghĩa là sử dụng 1 attribute style trong thẻ mở của html và viết các thuộc tính css vào-->
+                <li>Inline</li>
+                <!--vd: <h1 style="color: red; font-size: 18px">CSS in HTML?</h1> -->
+            </ul>
+
+
+        <h1>CSS selector?</h1>
+        <!-- cách để gọi các phần tử (elements) mà ta muốn "style" cho chúng trong html:
+        ID & Class: ID: chỉ xuất hiện 1 lần, khi select trong CSS thì dùng #___; 
+                    Class: khi muốn sử dụng 1 thuộc tính CSS chung cho nhiều đối tượng, khi select trong CSS thì dùng .___ 
+                    một thẻ có thể có nhiều class, mỗi class cách nhau bằng 1 khoảng trắng-->
+        <h1 id="first-heading">CSS selector</h1>
+        <h1 class="second-heading">CSS selector</h1>
+        <h1 class="second-heading" >CSS selector</h1>
+        <h1 class="second-heading">CSS selector</h1>
+
+
+        <h1>ĐỘ ƯU TIÊN TRONG CSS</h1> 
+        <!-- (thứ tự gọi phần tử ưu tiên giảm dần, càng nhiều điểm ưu tiên càng cao)-->
+        <ol>
+            <li>Internal, External?</li>
+            <li>Inline - 1000(điểm)</li>
+            <li>#id - 100 (điểm)</li>
+            <li>.class - 10 (điểm)</li>
+            <li>tag - 1 (điểm)</li> <!-- (gọi thẳng tên thẻ ra trong css) -->
+            <li>Equal specificity?</li> <!-- (khi gọi các phần tử giống nhau, gọi lần mới hơn sẽ đc ưu tiên) -->
+            <li>Universal selector and inherited?</li> <!-- (dùng chung 1 thuộc tính cho tất cả các cách gọi phần tử: *{} và kế thừa các thuộc tính có từ trước) -->
+        </ol>
+        <!-- ví dụ các thứ tự ưu tiên của 2 3 4 5
+       <h1 style="color: blue;" id="heading-id" class="heading-class">Priority?</h1>
+       <style>
+            #heading-id{
+                color: violet;
+            }
+            .heading-class{
+                color:yellow;
+            }
+            h1{
+                color: green;
+            }
+        </style> -->
+        <!-- nếu được gọi nhiều phần tử được nối vs nhau bằng dấu chấm mà tổng số điểm càng cao sẽ được ưu tiên
+        vd: #heading-id{ color: violet; }
+            #heading-id.heading-class{ color: red } => ưu tiên màu đỏ hơn tím vì 110>100
+        -->
+        <!-- nếu thêm !important vào sau thuộc tính thì sẽ ưu tiên hơn 1000(điểm)
+        vd: h1{
+            color: red !important;
+        } -->
+
+
+        <h1>CSS Variable?</h1>
+        <!-- Đặt biến trong CSS -->
+        <p>
+            Sử dụng lớp giả:
+            :root{ }
+        </p>
+
+
+        <h1>CSS units?</h1>
+        <!-- các đơn vị được sử dụng trong CSS để tùy chỉnh kích thước hiển thị trên web -->
+        <ol>
+            <li>Absolute units?
+                <ul>
+                    <li>px</li> <!--các kích thước cố định-->
+                    <!-- vd:
+                    <div class="box"></div>
+                    <style>
+                        .box{
+                            width: 100px;
+                            height: 100px;
+                            background-color: red;
+                        }
+                    </style> -->
+                    
+
+                    <li>pt</li>
+                    <li>cm</li>
+                    <li>mm</li>
+                    <li>inch</li>
+                    <li>pc</li>
+                </ul>
+            </li> <!--đơn vị tuyệt đối, không bị ảnh hưởng nếu có các yếu tố khác tác động trang web-->
+            <li>Relative units?
+                <ul>
+                    <li>%</li>
+                    <li>rem</li>
+                    <li>em</li>
+                    <li>vw</li>
+                    <li>vh</li>
+                    <li>vmin</li> <!--ít dùng-->
+                    <li>vmax</li> <!--ít dùng-->
+                    <li>ex</li> <!--ít dùng-->
+                    <li>ch</li> <!--ít dùng-->
+                </ul>
+            </li> <!--đơn vị tương đối, có thể thay đổi kích thước khi đối tượng phụ thuộc vào thay đổi-->
+        </ol>
+
+
+        <h1>CSS FUNCTIONS</h1> <!-- Hàm trong CSS -->
+        <ul>
+            <li>var()</li>
+            <li>linear-gradient()</li>
+            <li>rgba()</li>
+            <li>rgb()</li>
+            <li>calc</li>
+            <li>attr()</li>
+        </ul>
+    <!-- attr(): attribute: sử dụng kết hợp với lớp giả affter/before -->
+        <a href="https://fullstack.edu.vn">Học lập trình</a>
+    <!-- cách này dùng để có thể hiển thị url cùng với nội dung  -->
+        <div class="box" data-title="Đây là box nè"></div>
+        <style>
+            a::after{
+                content: "("attr(href)")"; /* thêm "" để lấy giá trị của attribute */
+            }
+            .box{ 
+                width: 50%;
+                height: 120px;
+                background-color: rgb(177, 177, 177);
+                }
+            .box::after{  /* tạo ra chữ ở trong box */
+                content: attr(data-title);/* có thể viết content:"xin chào các bạn" */
+            }
+        </style>
+
+
+        <h2>CSS pseudo-classes</h2> <!-- Lớp giả CSS -->
+        <ul>
+            <li>:root</li> <!-- Tham chiếu tới phần tử gốc trong html chính là cặp thẻ html -->
+            <li>:hover</li> <!-- biến đổi thuộc tính khi di chuột vào, đc định ngĩa vô số thuộc tính trong này -->
+            <li>:active</li> <!-- biến đổi thuộc tính khi bấm và giữ chuột -->
+            <li>:first-child</li> <!-- con đầu tiên: đổi thuộc tính -->
+            <li>:last-child</li> <!-- con cuối cùng: đổi thuộc tính -->
+        </ul>
+
+
+        <h2>CSS pseudo-elements <br> Phần tử giả </h2> <!-- phần tử giả, chỉ cần viết css ko cần html--> 
+        <!-- br dùng để xuống dòng -->
+        <ul>
+            <li>::before</li>
+            <li>::after</li>
+            <li>::first-letter</li> <!-- CSS cho chữ cái đầu tiên -->
+            <li>::first-line</li> <!-- CSS cho dòng đầu tiên -->
+            <li>::selection</li> <!-- CSS cho sự lựa chọn -->
+        </ul>
+
+        <h1>THUỘC TÍNH ĐỆM, VIỀN VÀ KHOẢNG LỀ</h1>
+        <h1>Thuộc tính padding (đệm)</h1>
+        <!-- là phần được chêm vào trên dưới trái phải -->
+        <div class="box1 box2" >Box1</div>
+        <div class="box1 box3" >Box2</div>
+        <h1>Thuộc tính border (đường viền)</h1>
+        <h1>Thuộc tính margin (thêm khoảng trống)</h1>
+        <h1>Thuộc tính box-sizing</h1>
+        <div class="box4" >Đây là nội dung bài viết</div>
+
+        <h1>THUỘC TÍNH BACKGROUND</h1>
+        <h1>Thuộc tính background-image (đặt ảnh nền)</h1>
+        <div class="header1"></div>
+
+
+
+        <h1 class="position">THUỘC TÍNH VỊ TRÍ</h1>
+        <div class="header2"></div>
+        <h1 class="position1">CSS position relative</h1>
+        <!-- Thiết lập vị trí đặc biệt hiển thị cho các element trên web -->
+        <ul class="fixed1">
+            <li>Relative</li>
+            <!-- Vị trí tương đối, không bị phụ thuộc vào đối tượng nào, lấy vị trí nó đang đứng làm gốc -->
+            <li>Absolute</li>
+            <!-- Vị trí tuyệt đối, bị phụ thuộc vào thẻ cha gần nhất có thuộc tính position làm gốc, phần tử con có thể
+            di chuyển xung quanh trong thẻ cha; được dùng như tạo ra 1 thông báo từ 1 biểu tượng-->
+            <li>Fixed</li>
+            <!-- Vị trí phụ thuộc vào cửa sổ trình duyệt; tạo ra 1 hay nhiều thẻ ko di chuyển khi trượt trang web -->
+            <li>Sticky</li>
+            <!-- Vị trí bám dính phụ thuộc vào khung trình duyệt, khi trượt thì phần tử đó bám cố định ko di chuyển vào bất kỳ chỗ nào, ko khuyến cáo sử dụng do ít trình duyệt cho phép -->
+        </ul>
+        <div class="box5">
+            <div class="box5-child"></div>
+        </div>
+
+
+
+        <h1>MỘT SỐ TRICKS VÀ TIPS</h1>
+        <h2>Các cách căn giữa trong CSS</h2>
+        <div class="box6">
+            <h3>CENTER ME</h3>
+        </div>
+
+        <h2>Hiển thị ảnh dự phòng khi ảnh chính lỗi</h2>
+        <img onerror="this.src='/img/abc.jpg'" src="https://static2-images.vnncdnaa.net/files/publish/2022/11/29/luu-diec-phi-1-342.jpg" >
+        <!-- khi link trên web bị lỗi sẽ thay thế bằng ảnh trong thư mục đã tải về, thêm onerror="this.src='đường link ảnh'" -->
+        <div class="div1"></div>
+        <style>
+            .div1{
+                width: 200px;
+                height: 200px;
+                background-image: url('https://image.thanhnienaa.vn/w2048/Uploaded/2022/abfluao/2022_06_27/h1-2626.jpg'), url('/img/abc.jpg');
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+        </style>
+        <!-- thử link bị lỗi trên thẻ div, ko dùng đc onerror mà thêm vào sau url('link bị lỗi') url('/img/abc.jpg') -->
+
+
+
+        <!-- 8. XÂY DỰNG WEB THE BAND -->
+        <h1>Giới thiệu dự án</h1>
+        <h2>Thực hành số 1:</h2>
+        <ol>
+            <li>Phân tích website</li>
+            <li>Dựng base (xây móng)</li>
+            <li>Xây dựng từng phần theo phân tích ban đầu</li>
+            <li>Hoàn thiện</li>
+        </ol>
+    </body>
+    
